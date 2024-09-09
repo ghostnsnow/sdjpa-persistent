@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-lqb-test-table
+      author: HP (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: EMP_PK
+                  name: EMP_ID
+                  type: INT
+              - column:
+                  name: EMP_EMAIL
+                  type: VARCHAR(255)
+              - column:
+                  name: EMP_LAST_NAME
+                  type: VARCHAR(255)
+              - column:
+                  name: EMP_FIRST_NAME
+                  type: VARCHAR(255)
+            tableName: LIQUIBASE_TEST_EMP
+  - changeSet:
+      id: 02-alter-lqb-test-table
+      author: HP (generated)
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: EMP_AGE
+                  type: int
+            tableName: LIQUIBASE_TEST_EMP
+        -  modifyDataType:
+             columnName:  EMP_EMAIL
+             newDataType:  VARCHAR(100)
+             tableName:  LIQUIBASE_TEST_EMP

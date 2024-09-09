@@ -1,0 +1,231 @@
+databaseChangeLog:
+- changeSet:
+    id: 1725632595789-1
+    author: HP (generated)
+    changes:
+    - createSequence:
+        sequenceName: CHIEF_MINISTERS_SEQ
+- changeSet:
+    id: 1725632595789-2
+    author: HP (generated)
+    changes:
+    - createSequence:
+        sequenceName: HIBERNATE_SEQUENCE
+- changeSet:
+    id: 1725632595789-3
+    author: HP (generated)
+    changes:
+    - createSequence:
+        sequenceName: PRIME_MINISTERS_SEQ
+- changeSet:
+    id: 1725632595789-4
+    author: HP (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_5
+            name: CM_ID
+            type: INT
+        - column:
+            name: CM_TENURE_END_TIME
+            type: date
+        - column:
+            name: CM_TENURE_START_TIME
+            type: date
+        - column:
+            name: CM_NAME
+            type: VARCHAR(255)
+        tableName: CHIEF_MINISTERS
+- changeSet:
+    id: 1725632595789-5
+    author: HP (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            name: CONTINENT
+            type: TINYINT
+        - column:
+            name: PM_ID
+            type: INT
+        - column:
+            name: REGION_ID
+            type: INT
+        - column:
+            name: STATECODE
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_F6B
+            name: COUNTRY_ID
+            type: VARCHAR(255)
+        - column:
+            name: COUNTRY_NAME
+            type: VARCHAR(255)
+        - column:
+            name: STATENAME
+            type: VARCHAR(255)
+        tableName: COUNTRIES
+- changeSet:
+    id: 1725632595789-6
+    author: HP (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_6
+            name: PM_ID
+            type: INT
+        - column:
+            name: PM_TENURE_END_TIME
+            type: date
+        - column:
+            name: PM_TENURE_START_TIME
+            type: date
+        - column:
+            name: PM_NAME
+            type: VARCHAR(255)
+        tableName: PRIME_MINISTERS
+- changeSet:
+    id: 1725632595789-7
+    author: HP (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            name: STATE_CODE
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: COUNTRY_ID
+            type: VARCHAR(255)
+        - column:
+            name: STATE_NAME
+            type: VARCHAR(255)
+        tableName: STATES
+- changeSet:
+    id: 1725632595789-8
+    author: HP (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: CM_ID
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: COUNTRY_ID
+            type: VARCHAR(255)
+        tableName: XREF_COUNTRY_CMS
+- changeSet:
+    id: 1725632595789-9
+    author: HP (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: CM_ID
+        constraintName: CONSTRAINT_6E
+        tableName: XREF_COUNTRY_CMS
+- changeSet:
+    id: 1725632595789-10
+    author: HP (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: PM_ID
+        constraintName: CONSTRAINT_F6
+        tableName: COUNTRIES
+- changeSet:
+    id: 1725632595789-11
+    author: HP (generated)
+    changes:
+    - createIndex:
+        associatedWith: ''
+        columns:
+        - column:
+            name: COUNTRY_ID
+        indexName: FK9V1XGNKQ6VUPJX6U510IHRRCR_INDEX_9
+        tableName: STATES
+- changeSet:
+    id: 1725632595789-12
+    author: HP (generated)
+    changes:
+    - createIndex:
+        associatedWith: ''
+        columns:
+        - column:
+            name: COUNTRY_ID
+        indexName: FKFH5B65CR890QYNKQJQMMJAFGU_INDEX_6
+        tableName: XREF_COUNTRY_CMS
+- changeSet:
+    id: 1725632595789-13
+    author: HP (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: COUNTRY_ID
+        baseTableName: STATES
+        constraintName: FK9V1XGNKQ6VUPJX6U510IHRRCR
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: COUNTRY_ID
+        referencedTableName: COUNTRIES
+        validate: true
+- changeSet:
+    id: 1725632595789-14
+    author: HP (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: COUNTRY_ID
+        baseTableName: XREF_COUNTRY_CMS
+        constraintName: FKFH5B65CR890QYNKQJQMMJAFGU
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: COUNTRY_ID
+        referencedTableName: COUNTRIES
+        validate: true
+- changeSet:
+    id: 1725632595789-15
+    author: HP (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: CM_ID
+        baseTableName: XREF_COUNTRY_CMS
+        constraintName: FKM2YWS6KCF3HUMX21PMWUBUHQL
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: CM_ID
+        referencedTableName: CHIEF_MINISTERS
+        validate: true
+- changeSet:
+    id: 1725632595789-16
+    author: HP (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: PM_ID
+        baseTableName: COUNTRIES
+        constraintName: FKSME8IYKONDS5D262UW6S3R2SA
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: PM_ID
+        referencedTableName: PRIME_MINISTERS
+        validate: true
+

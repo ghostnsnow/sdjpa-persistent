@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: sdjpa
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        highlight_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  liquibase:
+    change-log: db/changelog/db.changelog-master.yaml
+    enabled: true
+    user: sa
+    password:
+    url: jdbc:h2:tcp://localhost/~/test
+    driver-class-name: org.h2.Driver
+logging:
+  level:
+    org:
+      hibernate:
+        orm:
+          jdbc:
+            bind: TRACE

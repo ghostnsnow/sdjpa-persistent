@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-lqb-second-table
+      author: HP (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: SECOND_EMP_PK
+                  name: EMP_ID
+                  type: INT
+              - column:
+                  name: EMP_EMAIL
+                  type: VARCHAR(255)
+              - column:
+                  name: EMP_LAST_NAME
+                  type: VARCHAR(255)
+              - column:
+                  name: EMP_FIRST_NAME
+                  type: VARCHAR(255)
+            tableName: LIQUIBASE_SECOND_EMP
