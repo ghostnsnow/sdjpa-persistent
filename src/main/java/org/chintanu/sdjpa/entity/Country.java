@@ -105,6 +105,12 @@ public class Country {
 
     }
 
+    public Country(String countryName, int regionId, CountryContinent continent) {
+        this.countryName = countryName;
+        this.regionId = regionId;
+        this.continent = continent;
+    }
+
     public String getCountryId() {
         return countryId;
     }
