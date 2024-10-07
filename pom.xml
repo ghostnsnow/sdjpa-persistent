@@ -64,6 +64,7 @@
 					<username>sa</username>
 					<password />
 					<outputChangeLogFile>src/main/resources/db/changelog/baseline-changelog.yaml</outputChangeLogFile>
+					<changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</changeLogFile>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -36,3 +36,13 @@ databaseChangeLog:
              columnName:  EMP_EMAIL
              newDataType:  VARCHAR(100)
              tableName:  LIQUIBASE_TEST_EMP
+      rollback:
+        - dropColumn:
+            columns:
+              - column:
+                  name: EMP_AGE
+            tableName: LIQUIBASE_TEST_EMP
+        - modifyDataType:
+            columnName: EMP_EMAIL
+            newDataType: VARCHAR(255)
+            tableName: LIQUIBASE_TEST_EMP
